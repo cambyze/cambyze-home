@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class CambyzeHomeController
  */
-@WebServlet("/cambyze-home")
+@WebServlet("/menus")
 public class CambyzeHomeController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
