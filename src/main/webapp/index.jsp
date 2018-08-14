@@ -1,5 +1,5 @@
 <html>
 <body>
-<h2>CAMBYZE HOME PAGE</h2>
+<h2>CAMBYZE NEW HOME PAGE</h2>
 </body>
 </html>
