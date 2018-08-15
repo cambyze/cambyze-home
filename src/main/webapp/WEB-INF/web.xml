@@ -3,18 +3,18 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-   <display-name>Cambyze home page</display-name>
-   <servlet>
-   	<servlet-name>CambyzeHomeController</servlet-name>
-   	<display-name>CambyzeHomeController</display-name>
-   	<description></description>
-   	<servlet-class>controller.CambyzeHomeController</servlet-class>
-   </servlet>
-   <servlet-mapping>
-   	<servlet-name>CambyzeHomeController</servlet-name>
-   	<url-pattern>/CambyzeHomeController</url-pattern>
-   </servlet-mapping>
-   <welcome-file-list>
-      <welcome-file>index.jsp</welcome-file>
-   </welcome-file-list>
+  <display-name>Cambyze home page</display-name>
+  <servlet>
+    <servlet-name>CambyzeHomeController</servlet-name>
+    <display-name>CambyzeHomeController</display-name>
+    <description></description>
+    <servlet-class>controller.CambyzeHomeController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CambyzeHomeController</servlet-name>
+    <url-pattern>/CambyzeHomeController</url-pattern>
+  </servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
 </web-app>
