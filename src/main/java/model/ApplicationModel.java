@@ -18,11 +18,10 @@ public class ApplicationModel extends AbstractModel<Application> {
     try {
       session = sessionFactory.openSession();
       transaction = session.beginTransaction();
-      org.hibernate.query.Query query =
-          session.createQuery("select a from Application a where a.name like :keyword");
+      String sqlQuery = "select a from Application a where a.name like :keyword";
+      org.hibernate.query.Query query = session.createQuery(sqlQuery);
       query.setParameter("keyword", "%" + keyword + "%");
       applicationList = query.getResultList();
-      transaction.commit();
     } catch (Exception e) {
       applicationList = null;
       if (transaction != null) {
