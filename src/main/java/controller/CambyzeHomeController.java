@@ -1,11 +1,15 @@
 package controller;
 
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.ApplicationModel;
+import model.MenuModel;
+import entities.Application;
 
 /**
  * Servlet implementation class CambyzeHomeController
@@ -27,8 +31,17 @@ public class CambyzeHomeController extends HttpServlet {
    */
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    // TODO Auto-generated method stub
-    response.getWriter().append("Served at: ").append(request.getContextPath());
+    // Send the list of first level menus
+    ApplicationModel applicationModel = new ApplicationModel();
+    List<Application> applicationList = applicationModel.findByName("cambyze-home");
+    if (applicationList != null && applicationList.size() == 1) {
+      Integer applicationID = applicationList.iterator().next().getId();
+      MenuModel menuModel = new MenuModel();
+      request.setAttribute("menu1stLevelList", menuModel.findMenu1stLevelByAppli(applicationID));
+    } else {
+      request.setAttribute("menu1stLevelList", null);
+    }
+    request.getRequestDispatcher("index.jsp").forward(request, response);
   }
 
   /**
