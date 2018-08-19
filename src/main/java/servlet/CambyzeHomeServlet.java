@@ -52,8 +52,9 @@ public class CambyzeHomeServlet extends HttpServlet {
         menuDTOList.add(menuDTO);
       }
       json = new Gson().toJson(menuDTOList);
+      json = "{\"data\":" + json + "}";
     } else {
-      json = "";;
+      json = "{\"data\":[]}";
     }
     response.setContentType("application/json");
     response.setCharacterEncoding("UTF-8");
