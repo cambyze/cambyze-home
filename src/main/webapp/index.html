@@ -38,8 +38,8 @@
 
       mounted () {
         $.getJSON('http://cambyze.com:8181/cambyze-home/services', json => {
-          this.menus = json.MenuDTO
-          console.log(json.MenuDTO)
+          this.menus = json.data
+          console.log(json.data)
         })
       }
     })
