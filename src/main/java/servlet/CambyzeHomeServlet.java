@@ -51,7 +51,7 @@ public class CambyzeHomeServlet extends HttpServlet {
                 menu.getLabel());
         menuDTOList.add(menuDTO);
       }
-      json = new Gson().toJson(menuDTOList);
+      json = new Gson().toJson(menuDTOList, MenuDTO.class);
     } else {
       json = "";;
     }
