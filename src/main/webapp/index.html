@@ -3,35 +3,55 @@
 <head>
 <meta charset="UTF-8">
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
 
-<title>Two-Way Data Bind</title>
+<title>Vue.js load data with JSON</title>
 </head>
 <body>
 	<div id='root'>
-		<form method="post">
-			<div>Select Day</div>
-			<div v-for="day in days">
-				<input v-model='selected_days' type='checkbox' :value='day' />
-				{{day}}
-			</div>
 
-		</form>
-
-		You have selected : {{selected_days}}
+		<products-list :products="products"> </products-list>
 	</div>
 </body>
 
 <script>
+
+    Vue.component('products-list', {
+      template:"<div class='x'>\
+        <ul v-for='product in products'>\
+          <li> {{product.name}} {{product.price}}  </li>\
+        </ul>\
+      </div>\
+      ",
+      props:['products']
+    })                            
+
     new Vue({
       el: "#root",
       data: {
-         days : ['Sunday',"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-         selected_days :[]
-        
+        active : true,
+        products :[],
+
+      },
+      components :{
+
+      },
+
+
+
+      mounted () {
+        $.getJSON('http://ilikecoding.net/membership/api/memberships', json => {
+          this.products = json.data
+          console.log(json.data)
+        })
       }
+
+
+
     })
 
-  </script>
+</script>
 
 
 </html>
