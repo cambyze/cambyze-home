@@ -1,26 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.0.0/classic/theme-classic/resources/theme-classic-all.css"
-	rel="stylesheet" />
-<script type="text/javascript"
-	src="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.0.0/ext-all.js"></script>
+<meta charset="UTF-8">
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
-<script type="text/javascript">
-         Ext.onReady(function() {
-            Ext.create('Ext.Panel', {
-               renderTo: 'cambyzePanel',
-               height: 200,
-               width: 600,
-               title: 'Cambyze.com',
-               html: 'CAMBYZE HOME PAGE'
-            });
-         });
-      </script>
+<title>Two-Way Data Bind</title>
 </head>
-
 <body>
-	<div id="cambyzePanel"></div>
+	<div id='root'>
+		<form method="post">
+			<div>Select Day</div>
+			<div v-for="day in days">
+				<input v-model='selected_days' type='checkbox' :value='day' />
+				{{day}}
+			</div>
+
+		</form>
+
+		You have selected : {{selected_days}}
+	</div>
 </body>
+
+<script>
+    new Vue({
+      el: "#root",
+      data: {
+         days : ['Sunday',"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+         selected_days :[]
+        
+      }
+    })
+
+  </script>
+
+
 </html>
