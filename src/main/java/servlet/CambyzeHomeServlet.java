@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +12,8 @@ import model.ApplicationModel;
 import model.MenuModel;
 import com.google.gson.Gson;
 import entities.Application;
+import entities.Menu;
+import entities.MenuDTO;
 
 /**
  * Servlet implementation class CambyzeHomeServlet
@@ -39,7 +42,16 @@ public class CambyzeHomeServlet extends HttpServlet {
     if (applicationList != null && applicationList.size() == 1) {
       Integer applicationID = applicationList.iterator().next().getId();
       MenuModel menuModel = new MenuModel();
-      json = new Gson().toJson(menuModel.findMenu1stLevelByAppli(applicationID));
+      List<Menu> menuList = menuModel.findMenu1stLevelByAppli(applicationID);
+      // Transform hibernate class into serializable object for JSON
+      ArrayList<MenuDTO> menuDTOList = new ArrayList<MenuDTO>();
+      for (Menu menu : menuList) {
+        MenuDTO menuDTO =
+            new MenuDTO(menu.getId(), menu.getApplication().getId(), null, menu.getName(),
+                menu.getLabel());
+        menuDTOList.add(menuDTO);
+      }
+      json = new Gson().toJson(menuDTOList);
     } else {
       json = "";;
     }
