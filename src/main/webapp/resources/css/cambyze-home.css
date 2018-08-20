@@ -1,0 +1,140 @@
+/* 
+Cambyze home page style sheet
+*/
+a:focus {
+	color: #666;
+	outline: none;
+}
+
+ul {
+	padding: 0;
+	margin: 0;
+}
+
+p {
+	line-height: 2;
+}
+
+p:last-child {
+	margin-bottom: 0;
+}
+
+body {
+	color: #000;
+	font-family: 'Bookman Old Style', serif;
+	font-size: 1rem;
+	font-weight: 300;
+	padding-top: 10px;
+	overflow-x: hidden;
+}
+
+h1 {
+	font-size: 2rem;
+	font-weight: bold;
+	margin: 0;
+	padding: 0;
+}
+
+hr {
+	border: none;
+	border-top: 1px solid #CCCCCC;
+	height: 1px;
+	margin-bottom: 25px;
+}
+
+ul.chp-menu {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	display: block;
+	font-style: bold;
+	font-size: 16px;
+	line-height: 200%;
+	width: 320px;
+}
+
+ul.chp-menu li {
+	margin: 0;
+	padding: 0;
+	border-top: 1px solid #4D0000;
+	border-bottom: 1px solid #761A1A;
+}
+
+ul.chp-menu li a {
+	display: block;
+	text-decoration: none;
+	color: #fff;
+	background: #600;
+	padding: 0 0 0 20px;
+	width: 300px;
+}
+
+ul.chp-menu li a:hover {
+	background: #900 url("../images/chp_arrow.gif") no-repeat 0 9px;
+}
+
+ul.chp-menu li a.current, ul.chp-menu li a.current:hover {
+	background: #933 url("../images/chp_arrow.gif") no-repeat 0 9px;
+}
+
+.chp-content-box-home {
+	position: relative;
+	margin-bottom: 63px;
+}
+
+.chp-content-box {
+	margin-top: 60px;
+}
+
+.chp-content-box:first-child {
+	margin-top: 0;
+}
+
+.chp-banner {
+	height: 80px;
+	padding: 0;
+	background: #600;
+}
+
+.chp-banner-inner {
+	padding: 0 0 0 20px;
+	height: 100%;
+	text-align: left;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-webkit-box-align: center;
+	-webkit-align-items: left;
+	-ms-flex-align: left;
+	align-items: left;
+	-webkit-box-pack: left;
+	-webkit-justify-content: left;
+	-ms-flex-pack: left;
+	justify-content: center;
+}
+
+.chp-banner-title {
+	color: #f1ec8d;
+	text-transform: uppercase;
+	font-size: 2.5rem;
+	letter-spacing: 2px;
+}
+
+.chp-body {
+	margin-top: 20px;
+	position: relative;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+@media screen and (max-width: 564px) {
+	.chp-banner-title {
+		font-size: 2.8em;
+	}
+}
