@@ -33,7 +33,9 @@
       <div class='chp-sidebar'>\
         <nav class='chp-main-nav'>\
           <ul class='chp-main-nav-ul' v-for='menu in menus'>\
-            <li class='chp-nav-item'> {{menu.label}} </li>\
+            <li class='chp-nav-item'>\
+              <a href='#welcome' class='chp-nav-item-link chp-button'> {{menu.label}} </a>\
+            </li>\            
           </ul>\
         </nav>\
       </div>\
