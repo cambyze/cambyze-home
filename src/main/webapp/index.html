@@ -2,27 +2,39 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="cambyze-home.css" rel="stylesheet" media="all"
+	type="text/css">
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
 
-<title>List of menus in mySQL - Vue.js load data with JSON</title>
+<title>Cambyze home page</title>
 
 </head>
 <body>
 	<div id='root'>
-		<div class="top-container">CAMBYZE HOME PAGE</div>
-		<menus-list :menus="menus"> </menus-list>
+		<section id="welcome" class="chp-content-box chp-banner margin-b-10">
+			<div class="chp-banner-inner">
+				<hl class="chp-banner-title">Cambyze home page</hl>
+			</div>
+		</section>
+		<div class="chp-body">
+		
+			<menus-list :menus="menus"> </menus-list>
+		</div>
 	</div>
 </body>
 
 <script>
 
     Vue.component('menus-list', {
-      template:"<div class='menuList'>\
+      template:"<div class='chp-sidebar'>\
+        <nav class="chp-main-nav">\
         <ul v-for='menu in menus'>\
-          <li> {{menu.label}} </li>\
+          <li class="chp-nav-item"> {{menu.label}} </li>\
         </ul>\
+        </nav>\
       </div>\
       ",
       props:['menus']
