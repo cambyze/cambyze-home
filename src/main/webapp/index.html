@@ -11,6 +11,7 @@
 </head>
 <body>
 	<div id='root'>
+		<div class="top-container">CAMBYZE HOME PAGE</div>
 		<menus-list :menus="menus"> </menus-list>
 	</div>
 </body>
@@ -18,9 +19,9 @@
 <script>
 
     Vue.component('menus-list', {
-      template:"<div class='x'>\
+      template:"<div class='menuList'>\
         <ul v-for='menu in menus'>\
-          <li> {{menu.name}} {{menu.label}}  </li>\
+          <li class="menu"> {{menu.label}} </li>\
         </ul>\
       </div>\
       ",
