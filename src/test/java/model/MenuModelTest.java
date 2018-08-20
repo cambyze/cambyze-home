@@ -30,7 +30,7 @@ public class MenuModelTest extends TestCase {
       assertFalse(true);
     }
     for (Menu menu : menulList) {
-      LOGGER.info("1st level menu: " + menu.getLabel());
+      LOGGER.info("1st level menu: " + menu.getLabel() + "=>" + menu.getUrl());
       Set<Menu> subMenuList = menu.getMenuses();
       for (Menu subMenu : subMenuList) {
         LOGGER.info("++ 2nd level menu: " + subMenu.getLabel());

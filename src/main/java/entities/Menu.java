@@ -28,6 +28,7 @@ public class Menu implements java.io.Serializable {
   private Menu menu;
   private String name;
   private String label;
+  private String url;
   private Set<Menu> menuses = new HashSet<Menu>(0);
 
   public Menu() {}
@@ -38,11 +39,13 @@ public class Menu implements java.io.Serializable {
     this.label = label;
   }
 
-  public Menu(Application application, Menu menu, String name, String label, Set<Menu> menuses) {
+  public Menu(Application application, Menu menu, String name, String label, String url,
+      Set<Menu> menuses) {
     this.application = application;
     this.menu = menu;
     this.name = name;
     this.label = label;
+    this.setUrl(url);
     this.menuses = menuses;
   }
 
@@ -93,6 +96,15 @@ public class Menu implements java.io.Serializable {
 
   public void setLabel(String label) {
     this.label = label;
+  }
+
+  @Column(name = "url", nullable = true, length = 250)
+  public String getUrl() {
+    return url;
+  }
+
+  public void setUrl(String url) {
+    this.url = url;
   }
 
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "menu")

@@ -12,15 +12,18 @@ public class MenuDTO implements java.io.Serializable {
   private Integer fatherId;
   private String name;
   private String label;
+  private String url;
 
   public MenuDTO() {}
 
-  public MenuDTO(Integer id, Integer applicationId, Integer fatherId, String name, String label) {
+  public MenuDTO(Integer id, Integer applicationId, Integer fatherId, String name, String label,
+      String url) {
     this.id = id;
     this.applicationId = applicationId;
     this.fatherId = fatherId;
     this.name = name;
     this.label = label;
+    this.setUrl(url);
   }
 
   public Integer getId() {
@@ -61,5 +64,13 @@ public class MenuDTO implements java.io.Serializable {
 
   public void setLabel(String label) {
     this.label = label;
+  }
+
+  public String getUrl() {
+    return url;
+  }
+
+  public void setUrl(String url) {
+    this.url = url;
   }
 }

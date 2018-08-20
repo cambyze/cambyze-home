@@ -32,7 +32,7 @@
         template:"<div id='menu'>\
             <ul class='chp-menu' v-for='menu in menus'>\
               <li>\
-                <a href='http://cambyze.com'>\
+                <a v-bind:href='menu.url'>\
                 {{menu.label}} </a>\
               </li>\
             </ul>\

@@ -48,7 +48,7 @@ public class CambyzeHomeServlet extends HttpServlet {
       for (Menu menu : menuList) {
         MenuDTO menuDTO =
             new MenuDTO(menu.getId(), menu.getApplication().getId(), null, menu.getName(),
-                menu.getLabel());
+                menu.getLabel(), menu.getUrl());
         menuDTOList.add(menuDTO);
       }
       json = new Gson().toJson(menuDTOList);
