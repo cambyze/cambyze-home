@@ -29,15 +29,13 @@
 <script>
 
     Vue.component('menus-list', {
-      template:"<div class='chp-sidebar'>\
-        <nav class='chp-main-nav'>\
-          <ul class='chp-main-nav-ul' v-for='menu in menus'>\
-            <li class='chp-nav-item'>\
-              <a href='#welcome' class='chp-nav-item-link chp-button'> {{menu.label}} </a>\
-            </li>\            
-          </ul>\
-        </nav>\
-      </div>\
+        template:"<div class='chp-sidebar'>\
+            <nav class='chp-main-nav'>\
+            <ul v-for='menu in menus'>\
+              <li class='chp-nav-item'> {{menu.label}} </li>\
+            </ul>\
+            </nav>\
+          </div>\
       ",
       props:['menus']
     })                            
