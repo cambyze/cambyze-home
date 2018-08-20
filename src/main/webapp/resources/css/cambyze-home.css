@@ -120,10 +120,15 @@ ul.chp-menu li a.current, ul.chp-menu li a.current:hover {
 }
 
 .chp-banner-title {
-	color: #f1ec8d;
 	text-transform: uppercase;
 	font-size: 2.5rem;
 	letter-spacing: 2px;
+}
+
+.chp-banner-url {
+	display: block;
+	text-decoration: none;
+	color: #f1ec8d;
 }
 
 .chp-body {
