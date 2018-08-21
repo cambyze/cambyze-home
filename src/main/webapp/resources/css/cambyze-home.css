@@ -7,8 +7,8 @@
 .chp-body {
 	display: flex;
 	flex-direction: column;
-	color: #000;
-	font-family: 'Bookman Old Style', serif;
+	color: #0000ff;
+	font-family: 'font-family: 'Bookman Old Style', serif;;
 	font-size: 1rem;
 	padding-left: 30px;
 	padding-right: 30px;
@@ -16,7 +16,7 @@
 
 .chp-footer {
 	display: flex;
-	background-color: #f5f5f5;
+	background-color: #f2f2ff;
 	padding: 0 0 0 20px;
 	margin-bottom: 10px;
 }
@@ -24,7 +24,7 @@
 .chp-banner {
 	height: 60px;
 	margin-top: 20px;
-	background-color: #f5f5f5;
+	background-color: #f2f2ff;
 	padding: 0;
 	margin-bottom: 10px;
 }
@@ -40,20 +40,36 @@
 
 .chp-banner-title {
 	text-transform: uppercase;
-	font-size: 2rem;
+	font-family: Courier, monospace;
+	font-size: 20px;
 	letter-spacing: 1.5px;
 }
 
 .chp-banner-url {
 	text-decoration: none;
-	color: #000;
+	color: #00008c;
 }
 
 .chp-bar {
 	display: flex;
 	justify-content: space-between;
-	border-top: 1px solid #e0e0e0;
+	border-top: 1px solid #0000ff;
+	margin-left: 20px;
 	margin-bottom: 10px;
+}
+
+.chp-nav-bar {
+	padding: 0;
+	margin: 0;
+    display:flex;
+}
+
+.chp-nav-bar-item {
+	/* font-weight: bold; */
+	font-size: 16px;
+	text-transform: uppercase;
+	color: #00008c;	
+	margin-right: 30px;
 }
 
 .chp-lang-selector {
@@ -88,14 +104,21 @@ div.chp-main {
 	margin-bottom: 10px;
 }
 
+div.chp-main-box {
+	margin-left: 20px;
+	border: 1px solid #0000ff;
+	flex:2;
+}
+
 div.chp-menu {
 	display: flex;
 	flex-direction: column;
 	align-items: left;
 	justify-content: left;
 	width: 270px;
-	background-color: #f5f5f5;
-	color: #000;
+	background-color: #eaeaff;
+	color: #00008c;
+	margin-left: 20px;
 }
 
 div.chp-menu ul {
@@ -124,14 +147,15 @@ div.chp-menu ul li a {
 	width: 250px;
 	height: 50px;
 	transition: all .2s;
+	color: #00008c;
 }
 
 div.chp-menu ul li a:hover {
-	background-color: #f0f0f0;
+	background-color: #dfdfff;
 }
 
 div.chp-menu ul li a.current, ul.chp-menu li a.current:hover {
-	background-color: #f0f0f0;
+	background-color: #dfdfff;
 }
 
 /*
