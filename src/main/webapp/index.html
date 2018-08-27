@@ -81,7 +81,7 @@
       },
 
       mounted () {
-        $.getJSON('http://cambyze.com/cambyze-home/services', json => {
+        $.getJSON('http://cambyze.com:8080/cambyze-home/services', json => {
           this.menus = json.data
           console.log(json.data)
         })
