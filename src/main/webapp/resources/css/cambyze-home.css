@@ -108,10 +108,22 @@
 	background-color: #e0e0e0;
 }
 
-div.chp-main {
-	flex: 2;
-	display: flex;
-	margin-bottom: 10px;
+@media all and (min-aspect-ratio: 3/4) {
+	div.chp-main {
+		flex: 2;
+		display: flex;
+		margin-bottom: 10px;
+		flex-direction: row;
+	}
+}
+
+@media all and (max-aspect-ratio: 3/4) {
+	div.chp-main {
+		flex: 2;
+		display: flex;
+		margin-bottom: 10px;
+		flex-direction: column;
+	}
 }
 
 div.chp-main-box {
@@ -159,7 +171,6 @@ div.chp-main-moore {
 	}
 }
 */
-
 div.chp-menu {
 	display: flex;
 	flex-direction: column;
