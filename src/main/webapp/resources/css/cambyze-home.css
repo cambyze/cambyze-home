@@ -1,9 +1,4 @@
 /* Cambyze home page style sheet */
-.chp-body, html, body {
-	height: 100%;
-	margin: 0;
-}
-
 .chp-body {
 	display: flex;
 	flex-direction: column;
@@ -108,7 +103,11 @@
 	background-color: #e0e0e0;
 }
 
-@media all and (min-aspect-ratio: 3/4) {
+@media all and (min-aspect-ratio: 8/7) {
+	.chp-body, html, body {
+		height: 100%;
+		margin: 0;
+	}
 	div.chp-main {
 		flex: 2;
 		display: flex;
@@ -157,7 +156,11 @@
 	}
 }
 
-@media all and (max-aspect-ratio: 3/4) {
+@media all and (max-aspect-ratio: 8/7) {
+	.chp-body, html, body {
+		height: 700px;
+		margin: 0;
+	}
 	div.chp-main {
 		flex: 2;
 		display: flex;
