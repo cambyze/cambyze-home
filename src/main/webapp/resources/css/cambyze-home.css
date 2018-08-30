@@ -55,6 +55,11 @@
 	color: #00008c;
 }
 
+.chp-banner-url img {
+	width: 15em;
+	height: 5em;
+}
+
 .chp-bar {
 	display: flex;
 	justify-content: space-between;
@@ -159,7 +164,7 @@
 @media all and (max-aspect-ratio: 8/7) {
 	.chp-body, html, body {
 		height: 700px;
-		width: 650px;
+		width: 700px;
 		margin: 0;
 	}
 	div.chp-main {
