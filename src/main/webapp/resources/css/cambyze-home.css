@@ -159,6 +159,7 @@
 @media all and (max-aspect-ratio: 8/7) {
 	.chp-body, html, body {
 		height: 700px;
+		width: 650px;
 		margin: 0;
 	}
 	div.chp-main {
