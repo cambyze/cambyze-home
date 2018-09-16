@@ -166,10 +166,14 @@ div.chp-menu ul li a.current, ul.chp-menu li a.current:hover {
 		justify-content: left;
 		align-items: center;
 		text-decoration: none;
-		padding: 0 0 0 2rem;
-		width: 18rem;
+		padding: 0 0 0 0.5rem;
+		width: 19.5rem;
 		height: 3rem;
 		color: #00008c;
+	}
+	div.chp-menu ul li a img {
+		width: 22.5rem;
+		height: 3rem;
 	}
 	.chp-footer {
 		display: flex;
@@ -253,7 +257,7 @@ div.chp-menu ul li a.current, ul.chp-menu li a.current:hover {
 		text-transform: uppercase;
 		color: #00008c;
 		margin-right: 1.5rem;
-	}	
+	}
 	.chp-social {
 		float: right;
 		max-height: 1.8rem;
@@ -323,6 +327,10 @@ div.chp-menu ul li a.current, ul.chp-menu li a.current:hover {
 		width: 35rem;
 		height: 1.5rem;
 		color: #00008c;
+	}
+	div.chp-menu ul li a img {
+		width: 13.5rem;
+		height: 1.8rem;
 	}
 	.chp-footer {
 		display: flex;
