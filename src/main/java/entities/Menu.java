@@ -16,104 +16,117 @@ import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "menu", catalog = "db", uniqueConstraints = {
-    @UniqueConstraint(columnNames = "fatherid"), @UniqueConstraint(columnNames = "name")})
+		@UniqueConstraint(columnNames = "fatherid"),
+		@UniqueConstraint(columnNames = "name") })
 public class Menu implements java.io.Serializable {
 
-  /**
-   * Menus of a specific application
-   */
-  private static final long serialVersionUID = 1L;
-  private Integer id;
-  private Application application;
-  private Menu menu;
-  private String name;
-  private String label;
-  private String url;
-  private Set<Menu> menuses = new HashSet<Menu>(0);
+	/**
+	 * Menus of a specific application
+	 */
+	private static final long serialVersionUID = 1L;
+	private Integer id;
+	private Application application;
+	private Menu menu;
+	private String name;
+	private String label;
+	private String url;
+	private String icon;
+	private Set<Menu> menuses = new HashSet<Menu>(0);
 
-  public Menu() {}
+	public Menu() {
+	}
 
-  public Menu(Application application, String name, String label) {
-    this.application = application;
-    this.name = name;
-    this.label = label;
-  }
+	public Menu(Application application, String name, String label) {
+		this.application = application;
+		this.name = name;
+		this.label = label;
+	}
 
-  public Menu(Application application, Menu menu, String name, String label, String url,
-      Set<Menu> menuses) {
-    this.application = application;
-    this.menu = menu;
-    this.name = name;
-    this.label = label;
-    this.setUrl(url);
-    this.menuses = menuses;
-  }
+	public Menu(Application application, Menu menu, String name, String label,
+			String url, String icon, Set<Menu> menuses) {
+		this.application = application;
+		this.menu = menu;
+		this.name = name;
+		this.label = label;
+		this.setUrl(url);
+		this.icon = icon;
+		this.menuses = menuses;
+	}
 
-  @Id
-  @GeneratedValue(strategy = IDENTITY)
-  @Column(name = "id", unique = true, nullable = false)
-  public Integer getId() {
-    return this.id;
-  }
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "id", unique = true, nullable = false)
+	public Integer getId() {
+		return this.id;
+	}
 
-  public void setId(Integer id) {
-    this.id = id;
-  }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "applicationid", nullable = false)
-  public Application getApplication() {
-    return this.application;
-  }
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "applicationid", nullable = false)
+	public Application getApplication() {
+		return this.application;
+	}
 
-  public void setApplication(Application application) {
-    this.application = application;
-  }
+	public void setApplication(Application application) {
+		this.application = application;
+	}
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "fatherid", unique = true)
-  public Menu getMenu() {
-    return this.menu;
-  }
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "fatherid", unique = true)
+	public Menu getMenu() {
+		return this.menu;
+	}
 
-  public void setMenu(Menu menu) {
-    this.menu = menu;
-  }
+	public void setMenu(Menu menu) {
+		this.menu = menu;
+	}
 
-  @Column(name = "name", unique = true, nullable = false, length = 50)
-  public String getName() {
-    return this.name;
-  }
+	@Column(name = "name", unique = true, nullable = false, length = 50)
+	public String getName() {
+		return this.name;
+	}
 
-  public void setName(String name) {
-    this.name = name;
-  }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-  @Column(name = "label", nullable = false, length = 250)
-  public String getLabel() {
-    return this.label;
-  }
+	@Column(name = "label", nullable = false, length = 250)
+	public String getLabel() {
+		return this.label;
+	}
 
-  public void setLabel(String label) {
-    this.label = label;
-  }
+	public void setLabel(String label) {
+		this.label = label;
+	}
 
-  @Column(name = "url", nullable = true, length = 250)
-  public String getUrl() {
-    return url;
-  }
+	@Column(name = "url", nullable = true, length = 250)
+	public String getUrl() {
+		return url;
+	}
 
-  public void setUrl(String url) {
-    this.url = url;
-  }
+	public void setUrl(String url) {
+		this.url = url;
+	}
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "menu")
-  public Set<Menu> getMenuses() {
-    return this.menuses;
-  }
+	@Column(name = "icon", nullable = true, length = 128)
+	public String getIcon() {
+		return icon;
+	}
 
-  public void setMenuses(Set<Menu> menuses) {
-    this.menuses = menuses;
-  }
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "menu")
+	public Set<Menu> getMenuses() {
+		return this.menuses;
+	}
+
+	public void setMenuses(Set<Menu> menuses) {
+		this.menuses = menuses;
+	}
 
 }
