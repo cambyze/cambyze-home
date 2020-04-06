@@ -14,14 +14,14 @@
   </filter-mapping>
 
   <servlet>
-    <servlet-name>cambyzeHomeServlet</servlet-name>
-    <servlet-class>servlet.CambyzeHomeServlet</servlet-class>
-    <load-on-startup>1</load-on-startup>
+    <servlet-name>CambyzeIMDBServlet</servlet-name>
+    <servlet-class>servlet.CambyzeIMDBServlet</servlet-class>
+    <load-on-startup>0</load-on-startup>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>cambyzeHomeServlet</servlet-name>
-    <url-pattern>/services</url-pattern>
+    <servlet-name>CambyzeIMDBServlet</servlet-name>
+    <url-pattern>/imdbServices</url-pattern>
   </servlet-mapping>
 
   <welcome-file-list>

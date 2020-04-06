@@ -5,6 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="resources/css/cambyze-home.css" rel="stylesheet" media="all"
 	type="text/css">
+	
+<link rel="shortcut icon" href="resources/images/favicon.ico">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
 <script
@@ -44,8 +46,8 @@
 			<div id="menu" class="chp-menu">
 				<ul>
 					<li><a href="http://cambyze.com/phpMyAdmin/">Database management</a></li>
-					<li><a href="http://cambyze.com:8080/manager/html">Application server</a></li>
-					<li><a href="http://cambyze.com:8080/jenkins/">Applications build</a></li>
+					<li><a href="http://86.242.113.171/manager/html">Application server</a></li>
+					<li><a href="http://cambyze.com/jenkins/">Applications build</a></li>
 					<li><a href="https://github.com/cambyze?tab=repositories">GIT management</a></li>
 					<li><a href="resources/xml/mp4list.xml">Carthage NAS videos</a></li>
 					<li><a href="myLibraryServices/">myLibrary Services</a></li>
@@ -85,7 +87,7 @@
       },
 
       mounted () {
-        $.getJSON('http://cambyze.com:8080/cambyze-home/services', json => {
+        $.getJSON('http://86.242.113.171/imdbServices', json => {
           this.menus = json.data
           console.log(json.data)
         })
