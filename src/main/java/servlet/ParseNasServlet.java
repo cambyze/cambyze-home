@@ -1,9 +1,6 @@
 package servlet;
 
-import java.io.BufferedInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.StringReader;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +10,6 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import org.jboss.logging.Logger;
 import org.xml.sax.Attributes;
-import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
@@ -24,6 +20,9 @@ public class ParseNasServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
   private static final Logger LOGGER = Logger.getLogger(ParseNasServlet.class);
   private int numberFiles = 0;
+  private String json = "";
+  private String fileList = "";
+  private boolean first = true;
 
 
   /**
@@ -41,37 +40,20 @@ public class ParseNasServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
-    String json = "";
-    String xml = null;
+
     numberFiles = 0;
+    json = "";
+    fileList = "";
+    first = true;
 
 
     if (request != null && request.getContentLength() > 0) {
 
       LOGGER.info("Request size: " + request.getContentLength());
 
-      try {
-        byte[] xmlData = new byte[request.getContentLength()];
-
-        // Start reading XML Request as a Stream of Bytes
-        InputStream sis = request.getInputStream();
-        BufferedInputStream bis = new BufferedInputStream(sis);
-
-        bis.read(xmlData, 0, xmlData.length);
-
-        if (request.getCharacterEncoding() != null) {
-          xml = new String(xmlData, request.getCharacterEncoding());
-        } else {
-          xml = new String(xmlData);
-        }
-        // xml and xmlData contains incomplete data
-      } catch (IOException ioe) {
-        LOGGER.error("IOException:" + ioe.getMessage());
-      }
-
-      LOGGER.debug("XML body: " + xml);
-
       SAXParserFactory factory = SAXParserFactory.newInstance();
+
+
       try {
         SAXParser saxParser = factory.newSAXParser();
 
@@ -114,17 +96,25 @@ public class ParseNasServlet extends HttpServlet {
             } else if (name) {
               name = false;
             } else if (folder) {
+              String fileName = new String(ch, start, length);
+              LOGGER.info("File name: " + fileName);
+              if (first) {
+                fileList += "\n{\"fileName\" : \"" + fileName + "\"";
+                first = false;
+              } else {
+                fileList += "},\n{\"fileName\" : \"" + fileName + "\"";
+              }
+
               folder = false;
             } else if (category) {
               category = false;
             } else if (shortPath) {
-              LOGGER.info("File name: " + new String(ch, start, length));
               shortPath = false;
             }
           }
         };
 
-        saxParser.parse(new InputSource(new StringReader(xml)), handler);
+        saxParser.parse(request.getInputStream(), handler);
 
       } catch (ParserConfigurationException e) {
         LOGGER.error("ParserConfigurationException:" + e.getMessage());
@@ -132,7 +122,9 @@ public class ParseNasServlet extends HttpServlet {
         LOGGER.error("SAXException" + e.getMessage());
       }
 
-      json = "{\"message\" : \"files treated:" + String.valueOf(numberFiles) + " \"}";
+      json =
+          "{{\"message\" : \"files treated:" + String.valueOf(numberFiles) + " \"},[" + fileList
+              + "}]}";
 
     } else {
       LOGGER.info("The request is empty");
