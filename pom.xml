@@ -8,6 +8,7 @@
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<slf4jVersion>1.6.1</slf4jVersion>
 	</properties>
 	<dependencies>
 		<dependency>

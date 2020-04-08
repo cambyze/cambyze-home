@@ -14,7 +14,7 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 /**
  * Servlet implementation class CambyzeIMDBServlet
  */
-@WebServlet("/menus")
+@WebServlet("/menus2")
 public class CambyzeIMDBServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
   private static final Logger LOGGER = Logger.getLogger(CambyzeIMDBServlet.class);
