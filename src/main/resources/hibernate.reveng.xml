@@ -2,6 +2,6 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
 
 <hibernate-reverse-engineering>
-  <table-filter match-catalog="db" match-name="menu" />
-  <table-filter match-catalog="db" match-name="application" />
+  <table-filter match-catalog="cambyzedb" match-name="movie" />
+  <table-filter match-catalog="cambyzedb" match-name="category" />
 </hibernate-reverse-engineering>

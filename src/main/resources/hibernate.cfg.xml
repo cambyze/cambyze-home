@@ -1,17 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-                                         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-  <session-factory>
-    <property name="hibernate.enable_lazy_load_no_trans">true</property>
-    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.password">hamilcar</property>
-    <property name="hibernate.connection.url">jdbc:mysql://cambyze.com:3306/db</property>
-    <property name="hibernate.connection.username">cambyze</property>
-    <property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
-    <property name="hibernate.connection.isolation">2</property>
-    <property name="hibernate.current_session_context_class">thread</property>
-    <mapping class="entities.Menu" />
-    <mapping class="entities.Application" />
-  </session-factory>
+	<session-factory>
+		<!-- JDBC Database connection settings -->
+		<property name="hibernate.enable_lazy_load_no_trans">true</property>
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/cambyzedb?useSSL=false&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC</property>
+		<property name="connection.username">cambyzecom</property>
+		<property name="connection.password">3083Cambyze++</property>
+		<property name="connection.pool_size">1</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
+		<property name="show_sql">true</property>
+		<property name="current_session_context_class">thread</property>
+		<property name="hibernate.connection.isolation">2</property>
+		<mapping class="entities.Movie" />
+		<mapping class="entities.Category" />
+	</session-factory>
 </hibernate-configuration>

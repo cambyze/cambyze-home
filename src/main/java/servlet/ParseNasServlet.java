@@ -8,10 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+import model.MovieModel;
 import org.jboss.logging.Logger;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
+import entities.Movie;
 
 /**
  * Servlet implementation class CambyzeIMDBServlet
@@ -61,6 +63,8 @@ public class ParseNasServlet extends HttpServlet {
         DefaultHandler handler = new DefaultHandler() {
 
           boolean file = false;
+          Movie movie;
+          MovieModel movieModel = new MovieModel();
           boolean path = false;
           boolean name = false;
           boolean folder = false;
@@ -72,6 +76,7 @@ public class ParseNasServlet extends HttpServlet {
             if (qName.equalsIgnoreCase("file")) {
               file = true;
               numberFiles++;
+              movie = new Movie();
             } else if (qName.equalsIgnoreCase("path")) {
               path = true;
             } else if (qName.equalsIgnoreCase("name")) {
@@ -85,18 +90,29 @@ public class ParseNasServlet extends HttpServlet {
             }
           }
 
-          public void endElement(String uri, String localName, String qName) throws SAXException {}
+          public void endElement(String uri, String localName, String qName) throws SAXException {
+            if (qName.equalsIgnoreCase("file")) {
+              LOGGER.info("Save movie in DB: " + movie.getName());
+              movieModel.create(movie);
+            }
+          }
 
           public void characters(char ch[], int start, int length) throws SAXException {
 
             if (file) {
               file = false;
+
             } else if (path) {
               path = false;
+
             } else if (name) {
+              // file name of the movie
+              movie.setFile(new String(ch, start, length));
               name = false;
+
             } else if (folder) {
               String fileName = new String(ch, start, length);
+              movie.setName(fileName);
               LOGGER.info("File name: " + fileName);
               if (first) {
                 fileList += "\n{\"fileName\" : \"" + fileName + "\"";
@@ -104,11 +120,14 @@ public class ParseNasServlet extends HttpServlet {
               } else {
                 fileList += "},\n{\"fileName\" : \"" + fileName + "\"";
               }
-
               folder = false;
+
             } else if (category) {
               category = false;
+
             } else if (shortPath) {
+              // short path of the movie
+              movie.setShortPath(new String(ch, start, length));
               shortPath = false;
             }
           }
