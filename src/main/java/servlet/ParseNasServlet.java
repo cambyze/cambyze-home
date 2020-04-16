@@ -16,7 +16,7 @@ import org.xml.sax.helpers.DefaultHandler;
 import entities.Movie;
 
 /**
- * Servlet implementation class CambyzeIMDBServlet
+ * Servlet implementation class ParseNasServlet
  */
 public class ParseNasServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
@@ -25,6 +25,8 @@ public class ParseNasServlet extends HttpServlet {
   private String json = "";
   private String fileList = "";
   private boolean first = true;
+  private Movie movie = null;
+  private MovieModel movieModel = null;
 
 
   /**
@@ -35,7 +37,7 @@ public class ParseNasServlet extends HttpServlet {
   }
 
   /**
-   * Send the detailed information of the imdb movie
+   * Save the movies of the NAS in the database
    * 
    * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
    */
@@ -47,6 +49,8 @@ public class ParseNasServlet extends HttpServlet {
     json = "";
     fileList = "";
     first = true;
+    movie = null;
+    movieModel = new MovieModel();
 
 
     if (request != null && request.getContentLength() > 0) {
@@ -63,8 +67,7 @@ public class ParseNasServlet extends HttpServlet {
         DefaultHandler handler = new DefaultHandler() {
 
           boolean file = false;
-          Movie movie;
-          MovieModel movieModel = new MovieModel();
+
           boolean path = false;
           boolean name = false;
           boolean folder = false;
@@ -93,6 +96,9 @@ public class ParseNasServlet extends HttpServlet {
           public void endElement(String uri, String localName, String qName) throws SAXException {
             if (qName.equalsIgnoreCase("file")) {
               LOGGER.info("Save movie in DB: " + movie.getName());
+              if (numberFiles == 1) {
+                movieModel.markMovies();
+              }
               movieModel.create(movie);
             }
           }
@@ -103,6 +109,8 @@ public class ParseNasServlet extends HttpServlet {
               file = false;
 
             } else if (path) {
+              // full path of the movie
+              movie.setPath(new String(ch, start, length));
               path = false;
 
             } else if (name) {
@@ -145,6 +153,10 @@ public class ParseNasServlet extends HttpServlet {
           "{{\"message\" : \"files treated:" + String.valueOf(numberFiles) + " \"},[" + fileList
               + "}]}";
 
+      if (numberFiles > 0) {
+        LOGGER.error("Pb when deleting no more existing movies in the NAS");
+      }
+
     } else {
       LOGGER.info("The request is empty");
       json = "{\"message\" : \"Empty request\"}";
@@ -156,7 +168,7 @@ public class ParseNasServlet extends HttpServlet {
   }
 
   /**
-   * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+   * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
    */
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {

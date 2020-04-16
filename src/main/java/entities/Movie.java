@@ -22,6 +22,7 @@ public class Movie implements java.io.Serializable {
    * 
    */
 
+  // table movie
   // +-----------+---------------+------+-----+---------+-------+
   // | Field | Type | Null | Key | Default | Extra |
   // +-----------+---------------+------+-----+---------+-------+
@@ -45,7 +46,10 @@ public class Movie implements java.io.Serializable {
   @Column(name = "file", length = 255)
   private String file;
 
-  @Column(name = "shortPath", length = 1024)
+  @Column(name = "path", length = 1024)
+  private String path;
+
+  @Column(name = "shortPath", length = 255)
   private String shortPath;
 
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "movie")
@@ -85,6 +89,14 @@ public class Movie implements java.io.Serializable {
 
   public void setFile(String file) {
     this.file = file;
+  }
+
+  public String getPath() {
+    return path;
+  }
+
+  public void setPath(String path) {
+    this.path = path;
   }
 
   public String getShortPath() {

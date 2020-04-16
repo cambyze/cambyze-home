@@ -5,8 +5,11 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.jboss.logging.Logger;
 
 public abstract class AbstractModel<T> {
+
+  private static final Logger LOGGER = Logger.getLogger(AbstractModel.class);
 
   private Class<T> entity;
   protected SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
@@ -25,12 +28,15 @@ public abstract class AbstractModel<T> {
       result = session.createQuery("from " + entity.getName()).list();
       transaction.commit();
     } catch (Exception e) {
+      LOGGER.error("Error in findAll for entity " + entity.getName() + ": " + e.getMessage());
       result = null;
       if (transaction != null) {
         transaction.rollback();
       }
     } finally {
-      session.close();
+      if (session != null) {
+        session.close();
+      }
     }
     return result;
   }
@@ -45,12 +51,15 @@ public abstract class AbstractModel<T> {
       result = (T) session.get(entity, (Serializable) id);
       transaction.commit();
     } catch (Exception e) {
+      LOGGER.error("Error in find for entity " + entity.getName() + ": " + e.getMessage());
       result = null;
       if (transaction != null) {
         transaction.rollback();
       }
     } finally {
-      session.close();
+      if (session != null) {
+        session.close();
+      }
     }
     return result;
   }
@@ -65,12 +74,15 @@ public abstract class AbstractModel<T> {
       session.save(entity);
       transaction.commit();
     } catch (Exception e) {
+      LOGGER.error("Error in create: " + e.getMessage());
       result = false;
       if (transaction != null) {
         transaction.rollback();
       }
     } finally {
-      session.close();
+      if (session != null) {
+        session.close();
+      }
     }
     return result;
   }
@@ -85,12 +97,15 @@ public abstract class AbstractModel<T> {
       session.update(entity);
       transaction.commit();
     } catch (Exception e) {
+      LOGGER.error("Error in update: " + e.getMessage());
       result = false;
       if (transaction != null) {
         transaction.rollback();
       }
     } finally {
-      session.close();
+      if (session != null) {
+        session.close();
+      }
     }
     return result;
   }
@@ -105,12 +120,15 @@ public abstract class AbstractModel<T> {
       session.delete(entity);
       transaction.commit();
     } catch (Exception e) {
+      LOGGER.error("Error in delete: " + e.getMessage());
       result = false;
       if (transaction != null) {
         transaction.rollback();
       }
     } finally {
-      session.close();
+      if (session != null) {
+        session.close();
+      }
     }
     return result;
   }

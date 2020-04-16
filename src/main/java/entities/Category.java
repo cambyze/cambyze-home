@@ -18,6 +18,7 @@ public class Category implements java.io.Serializable {
    * Categories of a NAS movie
    */
 
+  // table category
   // +------------+--------------+------+-----+---------+----------------+
   // | Field | Type | Null | Key | Default | Extra |
   // +------------+--------------+------+-----+---------+----------------+
