@@ -99,9 +99,11 @@ div.chp-menu ul li a.current, ul.chp-menu li a.current:hover {
 	.chp-nav-bar-item {
 		/* font-weight: bold; */
 		font-size: 1.5rem;
-		text-transform: uppercase;
 		color: #00008c;
 		margin-right: 3rem;
+	}
+	.chp-nav-bar-item a {
+		text-decoration: none;
 	}
 	.chp-social {
 		float: right;
@@ -254,9 +256,11 @@ div.chp-menu ul li a.current, ul.chp-menu li a.current:hover {
 	.chp-nav-bar-item {
 		/* font-weight: bold; */
 		font-size: 1rem;
-		text-transform: uppercase;
 		color: #00008c;
 		margin-right: 1.5rem;
+	}
+	.chp-nav-bar-item a {
+		text-decoration: none;
 	}
 	.chp-social {
 		float: right;
