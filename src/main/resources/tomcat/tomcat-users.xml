@@ -45,5 +45,5 @@
 <role rolename="manager-gui"/>
 <role rolename="admin-gui"/>
 <role rolename="tomcat"/>
-<user username="cambyze" password="3083thorgal" roles="tomcat,manager,manager-gui,admin-gui"/>
+<user username="cambyze" password="3083Thorgal++" roles="tomcat,manager,manager-gui,admin-gui"/>
 </tomcat-users>
