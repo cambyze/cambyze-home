@@ -53,8 +53,8 @@ div.chp-menu ul li a.current, ul.chp-menu li a.current:hover {
 		margin: 0;
 	}
 	.chp-banner {
-		height: 7rem;
-		margin-top: 2rem;
+		height: 5rem;
+		margin-top: 1rem;
 		background-color: #f2f2ff;
 		padding: 0;
 		margin-bottom: 1rem;
@@ -70,7 +70,7 @@ div.chp-menu ul li a.current, ul.chp-menu li a.current:hover {
 	}
 	.chp-banner-url img {
 		width: 15rem;
-		height: 5rem;
+		height: 3rem;
 	}
 	.chp-banner-title {
 		text-transform: uppercase;
@@ -105,6 +105,7 @@ div.chp-menu ul li a.current, ul.chp-menu li a.current:hover {
 		margin-right: 3rem;
 	}
 	.chp-nav-bar-item a {
+		color: #00008c;
 		text-decoration: none;
 	}
 	.chp-social {
@@ -168,7 +169,7 @@ div.chp-menu ul li a.current, ul.chp-menu li a.current:hover {
 		flex-direction: column;
 		align-items: left;
 		justify-content: left;
-		width: 20rem;
+		width: 12.5rem;
 		background-color: #eaeaff;
 		color: #00008c;
 		margin-left: 2rem;
@@ -190,15 +191,15 @@ div.chp-menu ul li a.current, ul.chp-menu li a.current:hover {
 		align-items: center;
 		text-decoration: none;
 		padding: 0 0 0 0.5rem;
-		width: 19.5rem;
+		width: 12rem;
 		height: 3rem;
 		color: #00008c;
 	}
 	div.chp-menu ul li a img {
-		width: 22.5rem;
+		width: 15rem;
 		height: 3rem;
 	}
-	.chp-footer {
+	.chp-footer-bar {
 		display: flex;
 		background-color: #f2f2ff;
 		padding: 0 0 0 2rem;
@@ -208,6 +209,20 @@ div.chp-menu ul li a.current, ul.chp-menu li a.current:hover {
 		border-top-right-radius: 0.3rem;
 		border-bottom-left-radius: 0.3rem;
 		border-bottom-right-radius: 0.3rem;
+	}
+	.chp-footer-nav-bar {
+		padding: 0;
+		margin: 0;
+		display: flex;
+	}
+	.chp-footer-nav-bar-item {
+		font-size: 1.1rem;
+		color: #00008c;
+		margin-right: 3rem;
+	}
+	.chp-footer-nav-bar-item a {
+		color: #00008c;
+		text-decoration: none;
 	}
 }
 

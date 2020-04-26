@@ -27,10 +27,27 @@
 			<div class="chp-nav-bar">
 				<div class="chp-nav-bar-item">Home</div>
 				<div class="chp-nav-bar-item">
-					<a href="https://cambyze.com/manager" rel="nofollow noopener">Member</a>
+					<a href="https://cambyze.com/manager" rel="nofollow noopener">Member
+						page</a>
+				</div>
+				<div class="chp-nav-bar-item">
+					<a href="https://cambyze.com/manager" rel="nofollow noopener">Become
+						a new member</a>
 				</div>
 			</div>
 			<div class="chp-social">
+				<a href="https://jquery.com/" rel="nofollow noopener"
+					target="_blank"> <img title="jQuery" alt="jQuery"
+					src="resources/images/icon_jQuery.png" />
+				</a> <a href="https://vuejs.org/" rel="nofollow noopener"
+					target="_blank"> <img title="Vue.js" alt="Vue.js"
+					src="resources/images/logo_vue.js.png" />
+				</a> <a href="https://reactjs.org/" rel="nofollow noopener"
+					target="_blank"> <img title="React" alt="React"
+					src="resources/images/icon_react.png" />
+				</a> <a href="https://ionicframework.com/" rel="nofollow noopener"
+					target="_blank"> <img title="Ionic" alt="Ionic"
+					src="resources/images/icon_ionic.png" />
 				</a> <a href="https://www.linkedin.com/in/cambyze"
 					rel="nofollow noopener" target="_blank"> <img title="LinkedIn"
 					alt="LinkedIn" src="resources/images/07_linkedin1.png" />
@@ -47,40 +64,49 @@
 					<li><a href="https://cambyze.com/manager" target="_blank"
 						rel="nofollow noopener">Application server</a></li>
 					<li><a href="https://github.com/cambyze?tab=repositories"
-						target="_blank" rel="nofollow noopener">GIT management</a></li>
-					<li><a href="https://90.90.175.176/ionic" target="_blank"
-						rel="nofollow noopener">Ionic UI/UX</a></li>
+						target="_blank" rel="nofollow noopener">GIT repository</a></li>
+					<li><a href="https://cambyze.com/ionic" target="_blank"
+						rel="nofollow noopener">Ionic mode</a></li>
 				</ul>
 			</div>
 			<div class="chp-main-box">
 				<div class="chp-main-text-top">
-					<p>Need help to design or to improve your website.</p>
-					<p>Good time for training yourself in website or mobile app
-						implementation.</p>
+					<p>Need help to design or to improve your website ? A good time
+						to train yourself in website or mobile app implementation ?</p>
 					<p></p>
-					<p>CAMBYZE.com is at your service.</p>
+					<p>
+						<b>CAMBYZE.com is at your service</b>
+					</p>
 					<p></p>
 				</div>
 				<div class="chp-main-image"></div>
 				<div class="chp-main-text-bottom">
-					<p>Our goal is not to compete with specialized companies in
-						hosting " classic " web sites, but to accompany you further to the
-						design of sites that are more adapted to your needs:</p>
+					<p>Our goal is not to compete with companies specialized in
+						hosting web sites, but to accompany you further to the design of
+						sites that are more adapted to your needs:</p>
 					<ul>
-						<li>Application server administration (tomcat)</li>
+						<li>Application server administration (Tomcat)</li>
 						<li>DBA (mySQL / Oracle)</li>
+						<li>Reactive UI/UX: jQuery, Vue.js, React, Ionic
 						<li>Industrial quality code based on the best practices in
-							the sector: maven, hibernate, servlet, java, javascript, junit</li>
-						<li>Ongoing integration: GIT, jenkins, sonar</li>
+							the sector: maven, hibernate, servlet, java, junit</li>
+						<li>Continuous integration : GIT, jenkins, sonar</li>
 					</ul>
 					<p></p>
-					<p>Our employees are all from the software companies industry
-						as well as the founder as R&D manager at a one of the leaders in
-						the banking software market.</p>
+					<p>Our team is composed only by experienced engineers coming
+						from software companies, as well as the founder as a R&D manager
+						in one of the leaders in the banking software market.</p>
 				</div>
 			</div>
 		</div>
-		<div class="chp-footer">© CAMBYZE EURL 2020</div>
+		<div class="chp-footer-bar">
+			<div class="chp-footer-nav-bar">
+				<div class="chp-footer-nav-bar-item">© 2020 CAMBYZE</div>
+				<div class="chp-footer-nav-bar-item">
+					<a href="mailto:support@cambyze.com">Contact us</a>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 
@@ -110,7 +136,7 @@
       },
 
       mounted () {
-        $.getJSON('https://cambyze.com/imdbServices', json => {
+        $.getJSON('https://cambyze.com/imdbServices2', json => {
           this.menus = json.data
           console.log(json.data)
         })
