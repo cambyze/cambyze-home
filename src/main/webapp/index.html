@@ -10,17 +10,19 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
 <script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+	
+</script>
 <title>Cambyze - Home</title>
 
 </head>
 <body>
 	<div class="chp-body" id="root">
-		<section id="welcome" class="chp-content-box chp-banner">
+		<section id="welcome" class="chp-banner">
 			<div class="chp-banner-inner">
-				<h1 class="chp-banner-title">
-					<a class="chp-banner-url" href="http://www.cambyze.com">CAMBYZE.com</a>
-				</h1>
+				<a class="chp-banner-url" href="https://cambyze.com/"><img
+					title="Cambyze" alt="Cambyze"
+					src="resources/images/cambyze_icon.png" /></a>
 			</div>
 		</section>
 		<div class="chp-bar">
@@ -61,11 +63,11 @@
 		<div class="chp-main">
 			<div id="menu" class="chp-menu">
 				<ul>
-					<li><a href="https://cambyze.com/manager" target="_blank"
-						rel="nofollow noopener">Application server</a></li>
-					<li><a href="https://github.com/cambyze?tab=repositories"
+					<li><a class="chp-menu-top" href="https://github.com/cambyze?tab=repositories"
 						target="_blank" rel="nofollow noopener">GIT repository</a></li>
-					<li><a href="https://cambyze.com/ionic" target="_blank"
+					<li><a class="chp-menu-other" href="https://cambyze.com/manager" target="_blank"
+						rel="nofollow noopener">Application server</a></li>
+					<li><a class="chp-menu-other" href="https://cambyze.com/ionic" target="_blank"
 						rel="nofollow noopener">Ionic mode</a></li>
 				</ul>
 			</div>
@@ -109,39 +111,4 @@
 		</div>
 	</div>
 </body>
-
-<script>
-    Vue.config.devtools = true
-    
-    Vue.component('menus-list', {
-        template:"<div id='menu' class='chp-menu'>\
-            <ul v-for='menu in menus'>\
-            <li>\
-              <a v-bind:href='menu.url'>\
-              {{menu.label}} </a>\
-            </li>\
-          </ul>\
-          </div>\
-      ",
-      props:['menus']
-    })                            
-
-    new Vue({
-      el: "#root",
-      data: {
-        active : true,
-        menus :[],
-      },
-      components :{
-      },
-
-      mounted () {
-        $.getJSON('https://cambyze.com/imdbServices2', json => {
-          this.menus = json.data
-          console.log(json.data)
-        })
-      }
-    })
-</script>
-
 </html>
