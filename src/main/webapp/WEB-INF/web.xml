@@ -37,6 +37,15 @@
 		<servlet-name>XMLtoPDFServlet</servlet-name>
 		<url-pattern>/XMLtoPDFServices</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>SendMailServlet</servlet-name>
+		<servlet-class>servlet.SendMailServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SendMailServlet</servlet-name>
+		<url-pattern>/sendMailServices</url-pattern>
+	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>

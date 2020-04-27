@@ -76,7 +76,7 @@ public class XMLtoPDFServlet extends HttpServlet {
     response.setHeader("Pragma", "public");
     // setting the content type
     response.setContentType("application/pdf");
-    // the contentlength
+    // the content length
     response.setContentLength(baos.size());
     // write ByteArrayOutputStream to the ServletOutputStream
     ServletOutputStream os;

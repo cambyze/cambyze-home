@@ -46,8 +46,14 @@ public class CambyzeIMDBServlet extends HttpServlet {
               .header("x-rapidapi-key", "262be893ffmshd727a81662b0cc8p186d0bjsnde41f8853bec")
               .asString();
     } catch (UnirestException e) {
-      // TODO Auto-generated catch block
+      LOGGER.error(e.getMessage());
       e.printStackTrace();
+      StackTraceElement[] stack = e.getStackTrace();
+      if (stack != null) {
+        for (StackTraceElement element : stack) {
+          LOGGER.error(element.toString());
+        }
+      }
     }
 
     if (httpResponse != null) {

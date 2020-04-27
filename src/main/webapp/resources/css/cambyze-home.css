@@ -162,7 +162,6 @@ div.chp-menu ul li a:hover {
 		flex-direction: column;
 		align-items: left;
 		justify-content: left;
-		border: 1px solid #0000ff;
 	}
 	div.chp-main-text-top {
 		list-style-type: none;
