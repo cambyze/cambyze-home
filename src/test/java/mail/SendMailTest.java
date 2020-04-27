@@ -1,11 +1,13 @@
 package mail;
 
 import junit.framework.TestCase;
+import mailtools.MailBodies;
 import mailtools.SendMail;
 import org.jboss.logging.Logger;
 import org.junit.Test;
 import com.mailjet.client.errors.MailjetException;
 import com.mailjet.client.errors.MailjetSocketTimeoutException;
+import commons.Encryption;
 
 public class SendMailTest extends TestCase {
 
@@ -17,7 +19,15 @@ public class SendMailTest extends TestCase {
     SendMail sendMail = new SendMail();
     LOGGER.info("Before test sendMail");
     try {
-      sendMail.sendMail("cambyze@gmail.com", "cambyze");
+      sendMail.sendMail("cambyze@gmail.com", "cambyze", "jUnit test", "<b>Hello mail</b>");
+      sendMail.sendMail(
+          "admin@cambyze.com",
+          "admin",
+          "jUnit test",
+          MailBodies.getAccountRequest("hercule", "hercule@cat.com",
+              Encryption.encrypt("Hercule123+")));
+      sendMail.sendMail("thierry.nestelhut@orange.fr", "thierry", "jUnit test",
+          MailBodies.getSignUpBody("thierry"));
     } catch (MailjetException e) {
       LOGGER.error(e.getMessage());
       e.printStackTrace();
