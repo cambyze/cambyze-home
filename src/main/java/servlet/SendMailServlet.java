@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Enumeration;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,32 +21,82 @@ public class SendMailServlet extends HttpServlet {
   /**
    * @see HttpServlet#HttpServlet()
    */
-  public SendMailServlet() {
-    super();
-    // TODO Auto-generated constructor stub
-  }
 
   /**
-   * Send the detailed information of the imdb movie
+   * Send email
    * 
-   * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+   * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
    */
-  protected void doGet(HttpServletRequest request, HttpServletResponse response)
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
-    String json;
+    String json = "";
+    String username = "";
+    String email = "";
+    String password = "";
+    boolean isMissingParameters = true;
 
-    SendMail sendMail = new SendMail();
-    LOGGER.info("Before test sendMail");
-    json = "{\"message\" : \"Mail sent\"}";
-    try {
-      sendMail.sendMail("cambyze@gmail.com", "cambyze");
-    } catch (MailjetException e) {
-      LOGGER.error(e.getMessage() + "\n" + e.getStackTrace().toString());
-      json = "";
-    } catch (MailjetSocketTimeoutException e) {
-      LOGGER.error(e.getMessage() + "\n" + e.getStackTrace().toString());
-      json = "";
+    LOGGER.info("POST sendMailServices");
+
+    if (request != null && request.getContentLength() > 0) {
+
+      LOGGER.info("Body size: " + request.getContentLength());
+      LOGGER.info("Body type: " + request.getContentType());
+
+      Enumeration<String> params = request.getParameterNames();
+      while (params.hasMoreElements()) {
+        String key = params.nextElement();
+        String value = request.getParameter(key);
+        LOGGER.info("Body application/x-www-form-urlencoded: " + key + " = " + value);
+
+        if ("username".compareToIgnoreCase(key) == 0) {
+          username = value;
+        } else if ("email".compareToIgnoreCase(key) == 0) {
+          email = value;
+        } else if ("password".compareToIgnoreCase(key) == 0) {
+          password = value;
+          LOGGER.info("token:" + password);
+        }
+      }
+
+
+      if (username != null && !username.isEmpty() && email != null && !email.isEmpty()
+          && password != null && !password.isEmpty()) {
+        isMissingParameters = false;
+        SendMail sendMail = new SendMail();
+        LOGGER.info("Before sendMail");
+        try {
+          sendMail.sendMail(email, username);
+          json = "{\"message\" : \"Mail sent\"}";
+        } catch (MailjetException e) {
+          LOGGER.error(e.getMessage());
+          e.printStackTrace();
+          StackTraceElement[] stack = e.getStackTrace();
+          if (stack != null) {
+            for (StackTraceElement element : stack) {
+              LOGGER.error(element.toString());
+            }
+          }
+          json = "{\"message\" : \"Mail error " + e.getMessage() + "\"";
+        } catch (MailjetSocketTimeoutException e) {
+          LOGGER.error(e.getMessage());
+          e.printStackTrace();
+          StackTraceElement[] stack = e.getStackTrace();
+          if (stack != null) {
+            for (StackTraceElement element : stack) {
+              LOGGER.error(element.toString());
+            }
+          }
+          json = "{\"message\" : \"Mail error " + e.getMessage() + "\"";
+        }
+      } else {
+        LOGGER.error("Missing parameters");
+      }
+    } else {
+      LOGGER.error("Request is empty");
+    }
+    if (isMissingParameters) {
+      json = "{\"message\" : \"Missing parameters\"}";
     }
     response.setContentType("application/json");
     response.setCharacterEncoding("UTF-8");
@@ -53,12 +104,14 @@ public class SendMailServlet extends HttpServlet {
   }
 
   /**
-   * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+   * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
    */
-  protected void doPost(HttpServletRequest request, HttpServletResponse response)
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    // TODO Auto-generated method stub
-    doGet(request, response);
-  }
+    String json = "{\"message\" : \"Use POST method\"}";
+    response.setContentType("application/json");
+    response.setCharacterEncoding("UTF-8");
+    response.getWriter().write(json);
 
+  }
 }
