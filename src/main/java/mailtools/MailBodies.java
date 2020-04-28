@@ -15,14 +15,21 @@ public class MailBodies {
     html += "The validation of your account is in progress.</p><p style=\"color: #fff;\">.</p>";
     html += "<p style=\"font-size: 18px; text-align: justify; color: #00008c;\">";
     html += "Please reply to this mail to validate it.</p>";
-    html += "<p style=\"font-size: 18px; text-align: justify; color: #00008c;\">";
-    html += "It will be very useful if you enter in this mail a quick list of your web site</p>";
-    html += "<p style=\"font-size: 18px; text-align: justify; color: #00008c;\">";
-    html += "and IT experience and a short description of the projects you'd like to</p>";
-    html += "<p style=\"font-size: 18px; text-align: justify; color: #00008c;\">";
-    html += "implement with us.</p><p style=\"color: #fff;\">.</p>";
-    html += "<p style=\"font-size: 18px; text-align: justify; color: #00008c;\">";
+    html += "<p style=\"font-size: 17px; text-align: justify; color: #00008c;\">";
+    html += "It will be very useful if you enter in this mail:</p>";
+    html += "<ul><li style=\"font-size: 17px; text-align: justify; color: #00008c;\">";
+    html += "a quick history of your web site and IT experience;</li>";
+    html += "<li style=\"font-size: 17px; text-align: justify; color: #00008c;\">";
+    html += "a short description of the projects you'd like to implement with us.</li></ul>";
+    html += "<p style=\"color: #fff;\">.</p>";
+    html += "<p style=\"font-size: 17px; text-align: justify; color: #00008c;\">";
     html += "Our support team will contact you as soon as possible.</p>";
+    html += "<p style=\"font-size: 17px; text-align: justify; color: #00008c;\">";
+    html +=
+        "© 2020 CAMBYZE<a style=\"text-decoration: none; margin-left: 10px; margin-right: 10px\" ";
+    html += "href=\"https://cambyze.com/termsofservice/\" target=\"_blank\">Terms of service</a>";
+    html +=
+        "<a style=\"text-decoration: none;\" href=\"mailto:support@cambyze.com\">Contact us</a></p>";
     html += "<p style=\"color: #fff;\">.</p></body></html>";
 
     return html;
