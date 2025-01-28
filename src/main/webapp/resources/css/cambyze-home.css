@@ -125,7 +125,7 @@ div.chp-menu ul li a:hover {
 		flex-direction: column;
 		align-items: left;
 		justify-content: left;
-		width: 12.5rem;
+		width: 15rem;
 		background-color: #8eb4e3;
 	}
 	div.chp-menu ul {
@@ -140,7 +140,7 @@ div.chp-menu ul li a:hover {
 		align-items: center;
 		text-decoration: none;
 		padding: 0 0 0 0.5rem;
-		width: 12rem;
+		width: 15rem;
 		height: 3rem;
 		color: #fff;
 	}
