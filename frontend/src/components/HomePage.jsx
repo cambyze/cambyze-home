@@ -1,5 +1,12 @@
 import React, { useState } from "react";
 import logo from "../assets/cambyze_icon.png"; 
+import favicon from "../assets/favicon.ico";
+
+// Dynamically set favicon in head
+const link = document.querySelector("link[rel~='icon']");
+if (link) {
+  link.href = favicon;
+}
 
 export default function HomePage() {
   const [status, setStatus] = useState("idle");
